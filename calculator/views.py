@@ -5,6 +5,7 @@ import math
 def calculate_view(request):
     result = None
     error = None
+    instance_info = "Instance: " + __import__('socket').gethostname()
     
     if request.method == 'POST':
         form = InputForm(request.POST)
@@ -45,5 +46,6 @@ def calculate_view(request):
     return render(request, 'calculator/result.html', {
         'form': form,
         'result': result,
-        'error': error
+        'error': error,
+        'instance_info': instance_info
     })
